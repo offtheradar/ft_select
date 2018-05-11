@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/10 18:11:27 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/10 19:03:05 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/11 11:56:38 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -o
 
 FILES = main.c
+FILES += circ_double_lst.c
 
 SRC = $(addprefix src/, $(FILES))
 
