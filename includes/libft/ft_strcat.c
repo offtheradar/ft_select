@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/21 15:03:54 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/24 20:24:00 by adubugra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+char	*ft_strcat(char *s1, const char *s2)
+{
+	return (ft_strncat(s1, s2, ft_strlen(s2)));
+}

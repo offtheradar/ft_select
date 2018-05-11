@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_free_doublep.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/03/22 13:39:53 by ysibous           #+#    #+#             */
+/*   Updated: 2018/03/26 12:23:46 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+void	ft_free_doublep(char **str)
+{
+	int		i;
+	char	*s;
+
+	s = 0;
+	i = 0;
+	while (str[i])
+	{
+		s = str[i];
+		free(s);
+		i++;
+	}
+	free(str);
+}

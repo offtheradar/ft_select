@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/22 11:59:03 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/23 22:30:05 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int i;
+
+	i = 0;
+	if (s && f)
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+}

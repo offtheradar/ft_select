@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/24 19:34:00 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/24 19:35:07 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+int		ft_count_words(char const *str, char c)
+{
+	int count;
+	int i;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		while (str[i] == c)
+			i++;
+		if (str[i] != c && str[i])
+			count++;
+		while (str[i] != c && str[i])
+			i++;
+	}
+	return (count);
+}

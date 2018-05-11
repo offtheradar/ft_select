@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/22 12:26:42 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/23 23:01:38 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*str_otpt;
+	unsigned int	i;
+
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	if (!(str_otpt = ft_strnew(ft_strlen((char*)s))))
+		return (NULL);
+	while (s[i])
+	{
+		str_otpt[i] = f(i, s[i]);
+		i++;
+	}
+	return (str_otpt);
+}

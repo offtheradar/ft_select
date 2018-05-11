@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/24 19:10:59 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/24 20:26:28 by adubugra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+char	*ft_itoa(int n)
+{
+	char			*str;
+	size_t			str_len;
+	unsigned int	n_2;
+
+	str_len = ft_get_int_len(n);
+	n_2 = n;
+	if (n < 0)
+	{
+		n_2 = -n;
+		str_len++;
+	}
+	if (!(str = ft_strnew(str_len)))
+		return (NULL);
+	str[--str_len] = n_2 % 10 + '0';
+	while (n_2 /= 10)
+		str[--str_len] = n_2 % 10 + '0';
+	if (n < 0)
+		*(str + 0) = '-';
+	return (str);
+}

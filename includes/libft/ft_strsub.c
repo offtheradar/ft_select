@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/22 16:44:49 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/24 19:11:17 by adubugra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*new_str;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	if (!(new_str = ft_strnew(len)))
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		new_str[i] = s[(size_t)start + i];
+		i++;
+	}
+	new_str[i] = '\0';
+	return (new_str);
+}

@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/21 14:43:34 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/24 19:05:45 by adubugra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+char	*ft_strdup(char *s1)
+{
+	int		len_s1;
+	char	*s2;
+	char	*start;
+
+	len_s1 = ft_strlen(s1);
+	s2 = (char *)malloc(sizeof(char) * (len_s1 + 1));
+	if (!s2)
+		return (NULL);
+	start = s2;
+	while (*s1)
+	{
+		*s2 = *s1;
+		s1++;
+		s2++;
+	}
+	*s2 = '\0';
+	return (start);
+}

@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 20:11:21 by ysibous          ###   ########.fr       */
+/*   Created: 2018/02/21 15:49:32 by ysibous           #+#    #+#             */
+/*   Updated: 2018/02/23 20:08:59 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
-# include "libft/libft.h"
-# include <termios.h>
-# include <term.h>
-# define UP_KEY 4283163
-# define DOWN_KEY 4348699
+#include "libft.h"
 
-void		print_args(char **args, int j, int size);
-#endif
+void	*ft_memcpy(void *dst, const void *src,
+		size_t n)
+{
+	size_t	i;
+	char	*dst_cpy;
+	char	*src_cpy;
+
+	i = 0;
+	dst_cpy = dst;
+	src_cpy = (char*)src;
+	while (i < n)
+	{
+		dst_cpy[i] = src_cpy[i];
+		i++;
+	}
+	return (dst);
+}
