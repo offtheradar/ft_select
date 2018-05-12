@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/11 14:48:16 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/11 17:44:18 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <term.h>
 # define UP_KEY 4283163
 # define DOWN_KEY 4348699
+# define SPACE 32
 
 typedef struct			s_circ_node
 {
 	char				*data;
+	int					to_do;
 	struct s_circ_node	*next;
 	struct s_circ_node	*prev;
 }						t_circ_node;
@@ -37,5 +39,5 @@ void					insert_dc_lst(t_circ_node **start, char *str);
 
 void					delete_dc_lst(t_circ_node **start, char *str);
 
-void					print_dc_list(t_circ_node *start, t_circ_node *under);
+void					print_dc_list(t_circ_node *start);
 #endif

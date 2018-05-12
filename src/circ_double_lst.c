@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:18:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/11 15:15:07 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/12 14:03:05 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 void		insert_dc_lst(t_circ_node **start, char *str)
 {
 	t_circ_node *new_node;
+	t_circ_node *last;
 
-	new_node = ft_memalloc(sizeof(new_node));
+	new_node = ft_memalloc(sizeof(t_circ_node));
 	new_node->data = str;
+	new_node->to_do = 0;
 	if ((*start) == NULL)
 	{
 		new_node->next = new_node;
@@ -27,13 +29,42 @@ void		insert_dc_lst(t_circ_node **start, char *str)
 	}
 	else
 	{
+		last = (*start)->prev;
 		new_node->next = *start;
-		new_node->prev = (*start)->prev;
-		(*start)->prev->next = new_node;
 		(*start)->prev = new_node;
+		new_node->prev = last;
+		last->next = new_node;
 	}
 }
 
+void		print_dc_list(t_circ_node *start)
+{
+	t_circ_node *tmp;
+
+	if (!start)
+		return ;
+	tmp = start;
+	while (tmp->next != start)
+	{
+		if (tmp->to_do == 1 || tmp->to_do == 3)
+			ft_putstr("\033[4m");
+		if (tmp->to_do == 3 || tmp->to_do == 2)
+			ft_putstr("\033[7m");
+		ft_putstr(tmp->data);
+		ft_putchar('\n');
+		ft_putstr("\033[0m");
+		tmp = tmp->next;
+	}
+	if (tmp->to_do == 1 || tmp->to_do == 3)
+		ft_putstr("\033[4m");
+	if (tmp->to_do == 3 || tmp->to_do == 2)
+		ft_putstr("\033[7m");
+	ft_putstr(tmp->data);
+	ft_putchar('\n');
+	ft_putstr("\033[0m");
+}
+
+/*
 void		delete_dc_lst(t_circ_node **start, char *str)
 {
 	t_circ_node	*curr;
@@ -79,29 +110,4 @@ void		delete_dc_lst(t_circ_node **start, char *str)
 		free(curr);
 	}
 }
-
-void		print_dc_list(t_circ_node *start, t_circ_node *under)
-{
-	t_circ_node *tmp;
-	t_circ_node *last;
-
-	if (!start)
-		return ;
-	tmp = start;
-	last = start->prev;
-	while (tmp)
-	{
-		if (tmp == under)
-		{
-			printf("%s%s%s\n", tgetstr("us", NULL), tmp->data, tgetstr("ue", NULL));
-		}
-		else
-		{
-			ft_putstr(tmp->data);
-			ft_putchar('\n');
-		}
-		if (tmp == last)
-			break ;
-		tmp = tmp->next;
-	}
-}
+*/

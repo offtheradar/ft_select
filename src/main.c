@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:43:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/11 15:00:25 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/12 15:41:54 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,51 @@ int		init_terminal(void)
 	return (1);
 }
 
+int		handle_keys(t_circ_node *start)
+{
+	long long buffer;
+	t_circ_node *curr;
+
+	buffer = 0;
+	curr = start;
+	curr->to_do = 1;
+	ft_putstr_fd(tgetstr("cl", NULL), 1);
+	print_dc_list(start);
+	while (1)
+	{
+		buffer = 0;
+		read(0, &buffer, 8);
+		if (buffer == UP_KEY)
+		{
+			curr->to_do = (curr->to_do == 3 || curr->to_do == 2) ? 2 : 0;
+			curr = curr->prev;
+			curr->to_do = (curr->to_do == 2) ? 3 : 1;
+			ft_putstr_fd(tgetstr("cl", NULL), 1);
+			print_dc_list(start);
+		}
+		else if (buffer == DOWN_KEY)
+		{
+			curr->to_do = (curr->to_do == 3 || curr->to_do == 2) ? 2 : 0;
+			curr = curr->next;
+			curr->to_do = (curr->to_do == 2) ? 3 : 1;
+			ft_putstr_fd(tgetstr("cl", NULL), 1);
+			print_dc_list(start);
+		}
+		else if (buffer == SPACE)
+		{
+			curr->to_do = (curr->to_do == 3) ? 1 : 3;
+			ft_putstr_fd(tgetstr("cl", NULL), 1);
+			print_dc_list(start);
+		}
+	}
+}
+
 int		main(int ac, char **av)
 {
 	int i;
-	long long buffer;
 	t_circ_node	*start;
-	t_circ_node *tmp;
 
 	i = 1;
-	buffer = 0;
 	init_terminal();
 	start = NULL;
 	while (i < ac)
@@ -50,22 +86,5 @@ int		main(int ac, char **av)
 		insert_dc_lst(&start, av[i]);
 		i++;
 	}
-	tmp = start;
-	print_dc_list(start, tmp);
-	while (1)
-	{
-		read(0, &buffer, 8);
-		if (buffer == UP_KEY)
-		{
-			tmp = tmp->prev;
-			fputs(tgetstr("cl", NULL), stdout);
-			print_dc_list(start, tmp);
-		}
-		if (buffer == DOWN_KEY)
-		{
-			tmp = tmp->next;
-			fputs(tgetstr("cl", NULL), stdout);
-			print_dc_list(start, tmp);
-		}
-	}
+	handle_keys(start);
 }
