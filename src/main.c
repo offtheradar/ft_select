@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:43:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/12 15:41:54 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/14 11:16:15 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		handle_keys(t_circ_node *start)
 			ft_putstr_fd(tgetstr("cl", NULL), 1);
 			print_dc_list(start);
 		}
-	}
 }
 
 int		main(int ac, char **av)
