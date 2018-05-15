@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:18:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/12 14:03:05 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/14 19:25:11 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,50 +64,44 @@ void		print_dc_list(t_circ_node *start)
 	ft_putstr("\033[0m");
 }
 
-/*
-void		delete_dc_lst(t_circ_node **start, char *str)
+void		print_final_lst(t_circ_node *start)
 {
-	t_circ_node	*curr;
-	t_circ_node	*tmp;
-	t_circ_node	*prev_1;
+	t_circ_node *tmp;
 
-	if (!(*start))
+	if (!start)
 		return ;
-	curr = *start;
-	prev_1 = NULL;
-	while (ft_strcmp(curr->data, str))
+	tmp = start;
+	while (tmp->next != start)
 	{
-		if (curr->next == *start)
-			return ;
-		prev_1 = curr;
-		curr = curr->next;
+		if (tmp->to_do == 3 || tmp->to_do == 2)
+		{
+			ft_putstr(tmp->data);
+			ft_putchar('\n');
+			ft_putstr("\033[0m");
+		}
+		tmp = tmp->next;
 	}
-	if (curr->next == *start && !prev_1)
+	if (tmp->to_do == 3 || tmp->to_do == 2)
 	{
-		*start = NULL;
-		free(curr);
-		return ;
-	}
-	if (curr == *start)
-	{
-		prev_1 = (*start)->prev;
-		*start = (*start)->next;
-		prev_1->next = *start;
-		(*start)->prev = prev_1;
-		free(curr);
-	}
-	else if (curr->next == *start)
-	{
-		prev_1->next = *start;
-		(*start)->prev = prev_1;
-		free(curr);
-	}
-	else
-	{
-		tmp = curr->next;
-		prev_1->next = tmp;
-		tmp->prev = prev_1;
-		free(curr);
+		ft_putstr(tmp->data);
+		ft_putchar('\n');
+		ft_putstr("\033[0m");
 	}
 }
-*/
+
+
+void		delete_dc_lst(t_circ_node **curr)
+{
+	t_circ_node *tmp;
+	t_circ_node *tmp_next;
+
+	if (!(*curr))
+		return ;
+	tmp = *curr;
+	tmp_next = tmp->next;
+	(*curr)->prev->next = (*curr)->next;
+	(*curr)->next->prev = (*curr)->prev;
+	free(tmp);
+	*curr = tmp_next;
+	(*curr)->to_do = 1;
+}
