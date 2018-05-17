@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/15 23:42:35 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/16 20:51:46 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft/libft.h"
 # include <termios.h>
 # include <term.h>
+# include <signal.h>
 # define DEFAULT 0
 # define CURR 1
 # define SELECT 2
@@ -47,11 +48,19 @@ typedef struct			s_print_format
 	int					size;
 }						t_print_format;
 
-int						init_terminal(void);
+
 
 void					print_args(char **args, int j, int size);
 
 t_print_format			get_print_format(t_circ_node *start);
+
+/*
+****************************** Terminal ****************************************
+*/
+
+int						init_terminal(void);
+
+void					get_terminal(struct termios term);
 
 /*
 ****************************** Doubly Circular List ****************************
@@ -66,6 +75,7 @@ void					print_dc_list(t_circ_node *start);
 void					print_final_lst(t_circ_node *start);
 
 void					clear_and_print(t_circ_node *start);
+
 /*
 ****************************** Handle Keys ******** ****************************
 */

@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 11:18:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/16 17:10:25 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/16 18:52:10 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		print_dc_list(t_circ_node *start)
 {
 	t_circ_node 	*tmp;
 	int				i;
-	int				num;
+	//int				num;
 	t_print_format	p_f;
 
 	if (!start)
@@ -75,12 +75,12 @@ void		print_dc_list(t_circ_node *start)
 	p_f = get_print_format(start);
 //	printf("the col size is %d\n", p_f.col);
 //	printf("the  size is %d\n", p_f.size);
-// 	printf("the  longest str size is %d\n", p_f.longest_str);
-	num = p_f.col;
-	while (i < p_f.size)
-	{
-		num = p_f.col;
-		while (tmp && num)
+//printf("the  longest str size is %d\n", p_f.longest_str);
+	//num = p_f.col;
+	//while (i < p_f.size)
+	//{
+	//	num = p_f.col;
+		while (tmp)
 		{
 			if (tmp->to_do == 1 || tmp->to_do == 3)
 				ft_putstr("\033[4m");
@@ -90,13 +90,13 @@ void		print_dc_list(t_circ_node *start)
 			ft_putstr(tmp->data);
 			ft_putstr("\033[0m");
 			tmp = tmp->next;
-			num--;
-			i++;
+			//num--;
+			//i++;
 			if (tmp == start)
 				break ;
-		}
+		/*}
 		if (tmp == start)
-				break ;
+				break ;*/
 		ft_putchar('\n');
 	}	
 }
