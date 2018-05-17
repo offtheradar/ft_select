@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/14 18:09:07 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/15 23:42:35 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,22 @@ typedef struct			s_circ_node
 	struct s_circ_node	*prev;
 }						t_circ_node;
 
+/*
+** This struct holds information regarding the number of cols that could fit the window, the size of the longest string in the list, and the size of the window.
+*/
+
+typedef struct			s_print_format
+{
+	int					longest_str;
+	int					col;
+	int					size;
+}						t_print_format;
+
 int						init_terminal(void);
 
 void					print_args(char **args, int j, int size);
+
+t_print_format			get_print_format(t_circ_node *start);
 
 /*
 ****************************** Doubly Circular List ****************************
@@ -64,4 +77,6 @@ void					handle_down(t_circ_node *start, t_circ_node **curr);
 void					handle_space(t_circ_node *start, t_circ_node **curr);
 
 void					handle_enter(t_circ_node *start);
+
+void					handle_rm(t_circ_node **start, t_circ_node **curr);
 #endif

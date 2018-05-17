@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:43:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/14 19:22:30 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/16 16:55:26 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,9 @@ void		handle_keys(t_circ_node *start)
 			handle_space(start, &curr);
 		else if (buffer == 8 || buffer == 127)
 		{
-			if (curr == start && start->next == start && start->prev == start)
-			{
-				start = NULL;
-				clear_and_print(start);
-			}
-			else if (curr == start)
-				start = start->next;
-			delete_dc_lst(&curr);
+			handle_rm(&start, &curr);
 			if (!start)
 				break ;
-			if (start)
-				clear_and_print(start);
 		}
 		else if (buffer == ENTER)
 		{
