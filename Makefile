@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/10 18:11:27 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/11 11:56:38 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/16 20:55:35 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CFLAGS = -Wall -Wextra -Werror -o
 
 FILES = main.c
 FILES += circ_double_lst.c
+FILES += handle_keys.c
+FILES += terminal.c
 
 SRC = $(addprefix src/, $(FILES))
 
