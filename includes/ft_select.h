@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/26 02:13:28 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 05:22:37 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define UP_KEY 4283163
 # define DOWN_KEY 4348699
 # define ESC 27
-# define BACK_SPACE 8
-# define DELETE 127
+# define BACK_SPACE 127
+# define DELETE_KEY 63272
 # define ENTER 10
 # define SPACE 32
 
