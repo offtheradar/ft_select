@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:45:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/16 20:51:46 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 02:13:28 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <termios.h>
 # include <term.h>
 # include <signal.h>
+# include <sys/ioctl.h>
 # define DEFAULT 0
 # define CURR 1
 # define SELECT 2
@@ -38,7 +39,9 @@ typedef struct			s_circ_node
 }						t_circ_node;
 
 /*
-** This struct holds information regarding the number of cols that could fit the window, the size of the longest string in the list, and the size of the window.
+** This struct holds information regarding the number of cols that could fit the
+** window, the size of the longest string in the list,
+** and the size of the window.
 */
 
 typedef struct			s_print_format
@@ -48,7 +51,9 @@ typedef struct			s_print_format
 	int					size;
 }						t_print_format;
 
-
+t_circ_node		*start;
+struct termios	prev_term;
+struct termios	bg_term;
 
 void					print_args(char **args, int j, int size);
 
@@ -58,7 +63,7 @@ t_print_format			get_print_format(t_circ_node *start);
 ****************************** Terminal ****************************************
 */
 
-int						init_terminal(void);
+int						init_terminal(struct termios *term);
 
 void					get_terminal(struct termios term);
 
@@ -77,7 +82,7 @@ void					print_final_lst(t_circ_node *start);
 void					clear_and_print(t_circ_node *start);
 
 /*
-****************************** Handle Keys ******** ****************************
+****************************** Handle Keys *************************************
 */
 
 void					handle_up(t_circ_node *start, t_circ_node **curr);
@@ -89,4 +94,16 @@ void					handle_space(t_circ_node *start, t_circ_node **curr);
 void					handle_enter(t_circ_node *start);
 
 void					handle_rm(t_circ_node **start, t_circ_node **curr);
+
+/*
+******************************** Signals ***************************************
+*/
+
+void					init_signal(void);
+
+void					suspend_signal(int sig);
+
+void					continue_signal(int sig);
+
+void					handle_signal(int sig);
 #endif

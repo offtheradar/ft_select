@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 21:16:42 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/10 18:11:12 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/17 01:15:36 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+void    			ft_putstrn(char const *s, unsigned int n);
+
+void    			ft_putstrn_fd(char const *s, int fd, unsigned int n);
 
 void				ft_free_lst(t_list *lst);
 

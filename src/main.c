@@ -6,11 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:43:39 by ysibous           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/16 17:55:36 by ysibous          ###   ########.fr       */
-=======
-/*   Updated: 2018/05/16 20:50:52 by ysibous          ###   ########.fr       */
->>>>>>> press_enter
+/*   Updated: 2018/05/26 02:14:25 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +14,7 @@
 
 void		handle_keys(t_circ_node *start)
 {
-<<<<<<< HEAD
-	char			*term_name;
-	struct termios	term;
-
-	if (!(term_name = getenv("TERM")))
-		return (-1);
-	if (!tgetent(NULL, term_name))
-		return (-1);
-	if (tcgetattr(0, &term) == -1)
-		return (-1);
-	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
-	term.c_cc[VMIN] = 1;
-	term.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSADRAIN, &term) == -1)
-		return (-1);
-	ft_putstr(tgetstr("vi", 0));
-	return (1);
-}
-
-void	handle_keys(t_circ_node *start)
-{
-	long long buffer;
-=======
 	long long	buffer;
->>>>>>> press_enter
 	t_circ_node *curr;
 
 	buffer = 0;
@@ -77,11 +48,14 @@ void	handle_keys(t_circ_node *start)
 int		main(int ac, char **av)
 {
 	int			i;
-	t_circ_node	*start;
+	struct termios term;
 
 	i = 0;
 	start = NULL;
-	init_terminal();
+	init_terminal(&term);
+	prev_term = term;
+	bg_term = term;
+	init_signal();
 	while (++i < ac)
 		insert_dc_lst(&start, av[i]);
 	handle_keys(start);

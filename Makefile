@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/10 18:11:27 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/16 20:55:35 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/17 01:07:12 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ FILES = main.c
 FILES += circ_double_lst.c
 FILES += handle_keys.c
 FILES += terminal.c
+FILES += signals.c
+FILES += print_helpers.c
 
 SRC = $(addprefix src/, $(FILES))
 

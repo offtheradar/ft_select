@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 15:59:49 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/15 14:12:26 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 02:16:02 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clear_and_print(t_circ_node *start)
 {
-	ft_putstr_fd(tgetstr("cl", NULL), 1);
+	ft_putstr_fd(tgetstr("cl", NULL), 2);
 	print_dc_list(start);
 }
 
@@ -44,7 +44,7 @@ void	handle_space(t_circ_node *start, t_circ_node **curr)
 
 void	handle_enter(t_circ_node *start)
 {
-	ft_putstr_fd(tgetstr("cl", NULL), 1);
+	ft_putstr_fd(tgetstr("cl", NULL), 2);
 	print_final_lst(start);
 }
 
