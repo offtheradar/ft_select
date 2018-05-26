@@ -6,13 +6,13 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 20:50:38 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/17 00:58:43 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 06:10:31 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-int		init_terminal(struct termios *term)
+int			init_terminal(struct termios *term)
 {
 	char			*term_name;
 

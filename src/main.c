@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:43:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/26 05:29:21 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 06:11:05 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		handle_buffer(long long buffer, t_circ_node *start, t_circ_node **curr)
 	return (0);
 }
 
-void		handle_keys(t_circ_node *start)
+void	handle_keys(t_circ_node *start)
 {
 	long long	buffer;
 	t_circ_node *curr;
@@ -51,7 +51,6 @@ void		handle_keys(t_circ_node *start)
 	clear_and_print(start);
 	while (1)
 	{
-		
 		if (!(start))
 			break ;
 		buffer = 0;
