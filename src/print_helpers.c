@@ -6,14 +6,14 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 00:59:24 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/26 02:21:20 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/26 06:07:28 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 #include <stdio.h>
 
-t_print_format		get_print_format(t_circ_node *start)
+t_print_format	get_print_format(t_circ_node *start)
 {
 	t_circ_node		*tmp;
 	t_print_format	p_f;
@@ -23,7 +23,7 @@ t_print_format		get_print_format(t_circ_node *start)
 	l_str = 0;
 	p_f.longest_str = 0;
 	p_f.col = 0;
-	p_f.size = 0;;
+	p_f.size = 0;
 	while (tmp)
 	{
 		p_f.size += 1;
@@ -37,40 +37,42 @@ t_print_format		get_print_format(t_circ_node *start)
 	return (p_f);
 }
 
-void				print_dc_list(t_circ_node *start)
+void			print_dc_list_helper(t_circ_node *tmp, t_print_format p_f)
 {
-	t_circ_node 	*tmp;
+	if (tmp->to_do == 1 || tmp->to_do == 3)
+		ft_putstr("\033[4m");
+	if (tmp->to_do == 3 || tmp->to_do == 2)
+		ft_putstr("\033[7m");
+	ft_putstrn(tmp->data, p_f.longest_str + 2);
+	ft_putstr("\033[0m");
+}
+
+void			print_dc_list(t_circ_node *start)
+{
+	t_circ_node		*tmp;
 	int				i;
 	int				num;
 	t_print_format	p_f;
 
-	if (!start)
-		return ;
 	tmp = start;
-	i = 0;
+	i = -1;
 	p_f = get_print_format(start);
 	num = p_f.col;
-	while (i < p_f.size)
+	while (++i < p_f.size)
 	{
 		num = p_f.col;
 		while (tmp && num)
 		{
-			if (tmp->to_do == 1 || tmp->to_do == 3)
-				ft_putstr("\033[4m");
-			if (tmp->to_do == 3 || tmp->to_do == 2)
-				ft_putstr("\033[7m");
-			ft_putstrn(tmp->data, p_f.longest_str + 2);
-			ft_putstr("\033[0m");
+			print_dc_list_helper(tmp, p_f);
 			tmp = tmp->next;
 			num--;
-			i++;
 			if (tmp == start)
 				break ;
 		}
 		if (tmp == start)
-				break ;
+			break ;
 		ft_putchar('\n');
-	}	
+	}
 }
 
 void			print_final_lst(t_circ_node *start)
